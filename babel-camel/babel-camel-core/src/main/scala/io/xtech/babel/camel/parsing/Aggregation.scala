@@ -8,11 +8,10 @@
 
 package io.xtech.babel.camel.parsing
 
-import io.xtech.babel.camel.model.{ FoldBodyAggregationStrategy, ReduceBodyAggregationStrategy, Expressions, CamelMessageExpression }
 import io.xtech.babel.camel.model.Aggregation._
+import io.xtech.babel.camel.model.{ CamelMessageExpression, Expressions, FoldBodyAggregationStrategy, ReduceBodyAggregationStrategy }
 import io.xtech.babel.fish.model.AggregationDefinition
 import io.xtech.babel.fish.parsing.StepInformation
-
 import org.apache.camel.model.{ AggregateDefinition, ProcessorDefinition }
 
 import scala.collection.immutable
@@ -24,7 +23,7 @@ private[babel] trait Aggregation extends CamelParsing {
 
   abstract override def steps = super.steps :+ parse
 
-  private def setCompetion(aggregateDefinition: AggregateDefinition, completionStrategies: immutable.Seq[CompletionStrategy]) {
+  private[this] def setCompetion(aggregateDefinition: AggregateDefinition, completionStrategies: immutable.Seq[CompletionStrategy]) {
     for (completion <- completionStrategies) {
       completion match {
         case CompletionInterval(time) => {

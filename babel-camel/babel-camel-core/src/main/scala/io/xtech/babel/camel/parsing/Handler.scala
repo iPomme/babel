@@ -10,15 +10,14 @@ package io.xtech.babel.camel.parsing
 
 import io.xtech.babel.camel.HandlerDSL
 import io.xtech.babel.camel.model.{ ChannelDefinition, ErrorHandling, OnExceptionDefinition }
-import io.xtech.babel.fish.{ BodyPredicate, FromDSL }
 import io.xtech.babel.fish.parsing.StepInformation
-
+import io.xtech.babel.fish.{ BodyPredicate, FromDSL }
 import org.apache.camel.builder.RouteBuilder
 import org.apache.camel.model.ProcessorDefinition
 
 import scala.collection.JavaConverters._
-import scala.reflect.ClassTag
 import scala.language.implicitConversions
+import scala.reflect.ClassTag
 
 /**
   * The Exception Handler parser.
@@ -51,7 +50,7 @@ private[babel] trait Handler extends CamelParsing {
   /**
     * parses the error handling keyword, at both level : Route and RouteBuilder
     */
-  private def parse: Process = {
+  private[this] def parse: Process = {
 
     //handling at Route level
     case s @ StepInformation(exception: OnExceptionDefinition[_], camelProcessorDefinition: ProcessorDefinition[_]) =>

@@ -11,10 +11,9 @@
 package io.xtech.babel.camel.mock
 
 import io.xtech.babel.camel.parsing.CamelParsing
-import io.xtech.babel.fish.{ DSL2BaseDSL, BaseDSL }
 import io.xtech.babel.fish.model.StepDefinition
 import io.xtech.babel.fish.parsing.StepInformation
-
+import io.xtech.babel.fish.{ BaseDSL, DSL2BaseDSL }
 import org.apache.camel.model.ProcessorDefinition
 
 import scala.language.implicitConversions

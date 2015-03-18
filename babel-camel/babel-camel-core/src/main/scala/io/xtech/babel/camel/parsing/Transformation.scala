@@ -10,14 +10,13 @@ package io.xtech.babel.camel.parsing
 
 import io.xtech.babel.camel.TransformationDSL
 import io.xtech.babel.camel.model.{ BeanClassExpression, BeanNameExpression, BeanObjectExpression }
-import io.xtech.babel.fish.{ MessageTransformationExpression, BodyExpression, BaseDSL }
-import io.xtech.babel.fish.model.{ TransformerDefinition, Message }
+import io.xtech.babel.fish.model.{ Message, TransformerDefinition }
 import io.xtech.babel.fish.parsing.StepInformation
-
+import io.xtech.babel.fish.{ BaseDSL, BodyExpression, MessageTransformationExpression }
 import org.apache.camel.model.ProcessorDefinition
 
-import scala.reflect.ClassTag
 import scala.language.implicitConversions
+import scala.reflect.ClassTag
 
 /**
   * Parser for the transformation definitions

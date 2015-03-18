@@ -9,7 +9,7 @@ package io.xtech.babel.camel
 
 import io.xtech.babel.camel.model.ValidationDefinition
 import io.xtech.babel.fish._
-import io.xtech.babel.fish.model.{ Predicate, Message }
+import io.xtech.babel.fish.model.{ Message, Predicate }
 
 import scala.reflect.ClassTag
 

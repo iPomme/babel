@@ -8,13 +8,11 @@
 
 package io.xtech.babel.camel.choice
 
-import io.xtech.babel.camel.CamelDSL
 import io.xtech.babel.camel.builder.RouteBuilder
 import io.xtech.babel.camel.test.camel
-
-import org.apache.camel.{ Processor, Exchange, Predicate }
 import org.apache.camel.builder.{ RouteBuilder => CRouteBuilder }
 import org.apache.camel.component.mock.MockEndpoint
+import org.apache.camel.{ Exchange, Predicate, Processor }
 import org.specs2.mutable.SpecificationWithJUnit
 
 import scala.collection.JavaConverters._

@@ -10,8 +10,7 @@ package io.xtech.babel.camel.parsing
 
 import io.xtech.babel.camel.model.CamelMessage
 import io.xtech.babel.fish.model.Message
-
-import org.apache.camel.{ InvalidPayloadException, Processor, Exchange }
+import org.apache.camel.{ Exchange, InvalidPayloadException, Processor }
 
 /**
   * Wrapper for a scala function in a Camel Processor.

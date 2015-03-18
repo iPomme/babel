@@ -10,9 +10,8 @@ package io.xtech.babel.camel.parsing
 
 import io.xtech.babel.camel.RecipientListDSL
 import io.xtech.babel.camel.model.{ Expressions, RecipientListDefinition }
-import io.xtech.babel.fish.parsing.StepInformation
 import io.xtech.babel.fish.BaseDSL
-
+import io.xtech.babel.fish.parsing.StepInformation
 import org.apache.camel.model.ProcessorDefinition
 
 import scala.language.implicitConversions
@@ -29,7 +28,7 @@ private[babel] trait RecipientList extends CamelParsing {
   // add the recipientList parser to the other parsers
   abstract override def steps = super.steps :+ parse
 
-  private def parse: Process = {
+  private[this] def parse: Process = {
     case StepInformation(definition @ RecipientListDefinition(expression), camelProcessorDefinition: ProcessorDefinition[_]) => {
 
       camelProcessorDefinition.recipientList(Expressions.toCamelExpression(expression))

@@ -9,9 +9,8 @@
 package io.xtech.babel.camel
 
 import io.xtech.babel.camel.model._
-import io.xtech.babel.fish.{ BodyPredicate, _ }
 import io.xtech.babel.fish.model.{ Message, Predicate }
-
+import io.xtech.babel.fish.{ BodyPredicate, _ }
 import org.apache.camel.LoggingLevel
 import org.apache.camel.processor.RedeliveryPolicy
 import org.slf4j.{ Logger, LoggerFactory }

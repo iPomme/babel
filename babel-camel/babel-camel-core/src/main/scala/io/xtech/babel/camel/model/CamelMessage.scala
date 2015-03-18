@@ -23,7 +23,7 @@ class CamelMessage[I](message: NativeMessage) extends Message[I] {
 
   validateCamelMessage(message)
 
-  private def validateCamelMessage(msg: NativeMessage) {
+  private[this] def validateCamelMessage(msg: NativeMessage) {
     require(msg != null, "a camel message is mandatory")
     // TODO needs final version of scala reflection
   }

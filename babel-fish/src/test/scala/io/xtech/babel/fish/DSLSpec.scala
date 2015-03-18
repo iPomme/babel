@@ -8,10 +8,9 @@
 
 package io.xtech.babel.fish
 
-import io.xtech.babel.fish.model._
 import io.xtech.babel.fish.Test._
+import io.xtech.babel.fish.model._
 import org.specs2.matcher.MatchResult
-
 import org.specs2.mutable.SpecificationWithJUnit
 
 import scala.collection.immutable
@@ -23,7 +22,7 @@ class DSLSpec extends SpecificationWithJUnit {
 
     "create a route definition with a simple route (form,processBody,process,endpoint)" in {
 
-      import Test._
+      import io.xtech.babel.fish.Test._
 
       // create a route
       val definitions = new DSL {
@@ -59,7 +58,7 @@ class DSLSpec extends SpecificationWithJUnit {
     }
 
     "create a route definition with a route containing a choice (router)" in {
-      import Test._
+      import io.xtech.babel.fish.Test._
 
       // create a route
       val definitions = new DSL() {
@@ -117,7 +116,7 @@ class DSLSpec extends SpecificationWithJUnit {
     }
 
     "create a route definition with a route containing a bodiesplitter and filter" in {
-      import Test._
+      import io.xtech.babel.fish.Test._
 
       // create a route
       val definitions = new DSL() {
@@ -160,7 +159,7 @@ class DSLSpec extends SpecificationWithJUnit {
     }
 
     "create a route definition with a route containing a mulitcast" in {
-      import Test._
+      import io.xtech.babel.fish.Test._
 
       // create a route
       val definitions = new DSL() {
@@ -228,7 +227,7 @@ class DSLSpec extends SpecificationWithJUnit {
 
     //because might be inout, there is no validation on last step of a route
     "not throw a Validation exception when a route finishing with a filter" in {
-      import Test._
+      import io.xtech.babel.fish.Test._
       val routeDef = new DSL {
         from("direct:input").as[String].filter(_.body.exists(_ == "false"))
       }

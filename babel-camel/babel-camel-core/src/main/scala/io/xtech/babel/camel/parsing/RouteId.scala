@@ -12,7 +12,6 @@ import io.xtech.babel.camel.RouteIdDSL
 import io.xtech.babel.camel.model.RouteIdDefinition
 import io.xtech.babel.fish.FromDSL
 import io.xtech.babel.fish.parsing.StepInformation
-
 import org.apache.camel.model.ProcessorDefinition
 
 import scala.language.implicitConversions

@@ -8,12 +8,11 @@
 
 package io.xtech.babel.camel.parsing
 
-import io.xtech.babel.camel.{ SubRouteDSL, CamelDSL }
 import io.xtech.babel.camel.model._
+import io.xtech.babel.camel.{ CamelDSL, SubRouteDSL }
 import io.xtech.babel.fish.BaseDSL
 import io.xtech.babel.fish.model._
 import io.xtech.babel.fish.parsing.StepInformation
-
 import org.apache.camel.ExchangePattern
 import org.apache.camel.model.ProcessorDefinition
 
@@ -41,14 +40,14 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
     multicast,
     bodyTypeValidation)
 
-  private def from: Process = {
+  private[this] def from: Process = {
     case s @ StepInformation(FromDefinition(_, CamelSource(uri)), _) => {
 
       s.buildHelper.from(uri)
     }
   }
 
-  private def handle: Process = {
+  private[this] def handle: Process = {
     case s @ StepInformation(_: EmptyDefinition, camelProcessor) => {
 
       s.buildHelper
@@ -56,7 +55,7 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
   }
 
   //warning need to copy the code of from and routeId parsing
-  private def subs: Process = {
+  private[this] def subs: Process = {
     case step @ StepInformation(d: ChannelDefinition, camelProcessor) => {
       //end route
       camelProcessor match {
@@ -73,14 +72,14 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
 
   }
 
-  private def endpointImplementation: Process = {
+  private[this] def endpointImplementation: Process = {
     case StepInformation(endpoint @ EndpointDefinition(CamelSink(uri), requestReply), camelProcessorDefinition: ProcessorDefinition[_]) => {
       requestReply.foreach(x => camelProcessorDefinition.setExchangePattern(if (x) ExchangePattern.InOut else ExchangePattern.InOnly))
       camelProcessorDefinition.to(uri)
     }
   }
 
-  private def multicast: Process = {
+  private[this] def multicast: Process = {
     case StepInformation(MulticastDefinition(SeqCamelSink(sinks @ _*)), camelProcessorDefinition: ProcessorDefinition[_]) => {
 
       val uris = sinks.map(_.uri)
@@ -90,14 +89,14 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
     }
   }
 
-  private def bodyConvertor: Process = {
+  private[this] def bodyConvertor: Process = {
     case StepInformation(BodyConvertorDefinition(inClass, outClass), camelProcessorDefinition: ProcessorDefinition[_]) => {
 
       camelProcessorDefinition.convertBodyTo(outClass)
     }
   }
 
-  private def bodyTypeValidation: Process = {
+  private[this] def bodyTypeValidation: Process = {
     case StepInformation(BodyTypeValidationDefinition(inClass, outClass), camelProcessorDefinition: ProcessorDefinition[_]) => {
 
       camelProcessorDefinition.process(new CamelBodyTypeValidation(outClass))
@@ -108,7 +107,7 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
     * Parses the "choice" keyword, which implies to process both the when statement and the otherwise statement.
     * @see CamelDSL.StepImplementation
     */
-  private def choice: Process = {
+  private[this] def choice: Process = {
     case s @ StepInformation(d: ChoiceDefinition[_], camelProcessorDefinition: ProcessorDefinition[_]) => {
 
       implicit val implicitRouteBuilder = s.buildHelper
@@ -142,7 +141,7 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
   /**
     * Parses the split keyword and implements a camel splitter from a babel splitter definition.
     */
-  private def splitter: Process = {
+  private[this] def splitter: Process = {
 
     case StepInformation(SplitterDefinition(expression), camelProcessorDefinition: ProcessorDefinition[_]) => {
 
@@ -154,7 +153,7 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
   /**
     * Parses the filter keyword and implements a camel filter from a babel filter definition.
     */
-  private def filter: Process = {
+  private[this] def filter: Process = {
 
     case StepInformation(FilterDefinition(predicate), camelProcessorDefinition: ProcessorDefinition[_]) => {
 
@@ -167,7 +166,7 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
   /**
     * parses the error handling keyword, at both level : Route and RouteBuilder
     */
-  private def handler: Process = {
+  private[this] def handler: Process = {
 
     case step @ StepInformation(s: HandlerDefinition, camelProcessorDefinition) => {
       s.scopedSteps.foreach(x => process(x, camelProcessorDefinition)(step.buildHelper))

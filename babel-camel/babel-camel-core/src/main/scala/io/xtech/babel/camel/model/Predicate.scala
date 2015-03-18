@@ -8,10 +8,10 @@
 
 package io.xtech.babel.camel.model
 
-import io.xtech.babel.fish.{ BodyPredicate, MessagePredicate }
 import io.xtech.babel.fish.model.{ Message, Predicate }
-import org.apache.camel.{ Exchange, Predicate => CamelPredicate }
+import io.xtech.babel.fish.{ BodyPredicate, MessagePredicate }
 import org.apache.camel.builder.xml.XPathBuilder
+import org.apache.camel.{ Exchange, Predicate => CamelPredicate }
 
 /**
   * XPath defines a xpath used for an expression or a predicate.

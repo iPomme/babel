@@ -22,7 +22,7 @@ import scala.reflect._
   */
 private[camel] class TransformationDSL[I: ClassTag](protected val baseDsl: BaseDSL[I]) extends DSL2BaseDSL[I] {
 
-  private def bean(beanRef: String, method: Option[String]): BaseDSL[Any] = {
+  private[this] def bean(beanRef: String, method: Option[String]): BaseDSL[Any] = {
 
     TransformerDefinition(BeanNameExpression(beanRef, method))
   }
@@ -35,7 +35,7 @@ private[camel] class TransformationDSL[I: ClassTag](protected val baseDsl: BaseD
     "To improve you route typing, please use a process or a processBody with a function.", "version 0.5.0")
   def bean(str: String, method: String): BaseDSL[Any] = bean(str, Some(method))
 
-  private def bean(bean: AnyRef, method: Option[String]): BaseDSL[Any] = {
+  private[this] def bean(bean: AnyRef, method: Option[String]): BaseDSL[Any] = {
 
     TransformerDefinition(BeanObjectExpression(bean, method))
 
@@ -49,7 +49,7 @@ private[camel] class TransformationDSL[I: ClassTag](protected val baseDsl: BaseD
     "To improve you route typing, please use a process or a processBody with a function.", "version 0.5.0")
   def bean(ref: AnyRef, method: String): BaseDSL[Any] = bean(ref, Some(method))
 
-  private def bean(clazz: Class[_], method: Option[String]): BaseDSL[Any] = {
+  private[this] def bean(clazz: Class[_], method: Option[String]): BaseDSL[Any] = {
 
     TransformerDefinition(BeanClassExpression(clazz, method))
 

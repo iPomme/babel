@@ -8,6 +8,7 @@
 package io.xtech.babel.camel
 
 import java.util.{ List => JList }
+
 import io.xtech.babel.camel.test.camel
 import org.apache.camel.builder.Builder
 import org.apache.camel.component.mock.MockEndpoint

@@ -9,10 +9,10 @@
 package io.xtech.babel.camel
 
 import io.xtech.babel.camel.builder.RouteBuilder
+import io.xtech.babel.camel.model.Aggregation.{ CamelAggregation, CompletionSize, ReduceBody, _ }
 import io.xtech.babel.camel.test.camel
-
+import io.xtech.babel.fish.MessageExpression
 import io.xtech.babel.fish.model.Message
-
 import org.apache.camel.Exchange
 import org.apache.camel.builder.{ RouteBuilder => CRouteBuilder }
 import org.apache.camel.component.mock.MockEndpoint
@@ -21,12 +21,6 @@ import org.apache.camel.processor.aggregate.{ AggregationStrategy, GroupedExchan
 import org.specs2.mutable.SpecificationWithJUnit
 
 import scala.collection.JavaConverters._
-import io.xtech.babel.camel.model.Aggregation._
-import io.xtech.babel.camel.model.Aggregation.CamelReferenceAggregation
-import io.xtech.babel.camel.model.Aggregation.CompletionSize
-import io.xtech.babel.fish.MessageExpression
-import io.xtech.babel.camel.model.Aggregation.ReduceBody
-import io.xtech.babel.camel.model.Aggregation.CamelAggregation
 
 class AggregateSpec extends SpecificationWithJUnit {
   sequential

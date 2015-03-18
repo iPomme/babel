@@ -18,7 +18,7 @@ class SplitterDSLSpec extends SpecificationWithJUnit {
 
     "accept a function" in {
 
-      import Test._
+      import io.xtech.babel.fish.Test._
 
       val definitions = new DSL {
         from("direct:input").as[List[String]].splitBody(_.iterator).processBody((str: String) => str.toInt).to("mock:output")
