@@ -19,7 +19,6 @@ import org.apache.camel.component.mock.MockEndpoint
 import org.apache.camel.impl.SimpleRegistry
 import org.apache.camel.processor.aggregate.{ AggregationStrategy, GroupedExchangeAggregationStrategy }
 import org.specs2.mutable.SpecificationWithJUnit
-
 import scala.collection.JavaConverters._
 
 class AggregateSpec extends SpecificationWithJUnit {

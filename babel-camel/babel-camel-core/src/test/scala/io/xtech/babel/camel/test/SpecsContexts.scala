@@ -22,7 +22,7 @@ class camel extends After {
 
   def createExchange(): Exchange = new DefaultExchange(camelContext)
 
-  def after {
+  def after: Unit = {
     camelContext.shutdown()
   }
 }
@@ -35,7 +35,7 @@ class springContext(configLocation: String) extends After {
 
   lazy val spring = new ClassPathXmlApplicationContext(configLocation)
 
-  def after {
+  def after: Unit = {
     spring.close()
   }
 }

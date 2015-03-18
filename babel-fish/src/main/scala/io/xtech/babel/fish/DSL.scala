@@ -9,7 +9,6 @@
 package io.xtech.babel.fish
 
 import io.xtech.babel.fish.model._
-
 import scala.collection.immutable
 import scala.reflect._
 

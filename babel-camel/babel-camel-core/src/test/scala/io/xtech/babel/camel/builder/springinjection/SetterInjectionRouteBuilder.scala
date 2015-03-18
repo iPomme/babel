@@ -18,7 +18,6 @@ class MyBeanProcessor {
 
 //#doc:babel-camel-spring-setter
 import org.springframework.beans.factory.annotation.Autowired
-
 import scala.beans.BeanProperty
 
 class SetterInjectionRouteBuilder extends SpringRouteBuilder {

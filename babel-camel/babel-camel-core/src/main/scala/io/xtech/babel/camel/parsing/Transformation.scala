@@ -14,7 +14,6 @@ import io.xtech.babel.fish.model.{ Message, TransformerDefinition }
 import io.xtech.babel.fish.parsing.StepInformation
 import io.xtech.babel.fish.{ BaseDSL, BodyExpression, MessageTransformationExpression }
 import org.apache.camel.model.ProcessorDefinition
-
 import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag

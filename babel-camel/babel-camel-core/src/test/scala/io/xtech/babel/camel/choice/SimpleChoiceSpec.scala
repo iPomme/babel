@@ -14,7 +14,6 @@ import org.apache.camel.builder.{ RouteBuilder => CRouteBuilder }
 import org.apache.camel.component.mock.MockEndpoint
 import org.apache.camel.{ Exchange, Predicate, Processor }
 import org.specs2.mutable.SpecificationWithJUnit
-
 import scala.collection.JavaConverters._
 
 class SimpleChoiceSpec extends SpecificationWithJUnit {
@@ -51,7 +50,7 @@ class SimpleChoiceSpec extends SpecificationWithJUnit {
     }
 
     val processor = new Processor {
-      def process(p1: Exchange) {
+      def process(p1: Exchange): Unit = {
         p1.getIn().setBody(p1.getIn.getBody + "done")
       }
     }
@@ -153,7 +152,7 @@ class SimpleChoiceSpec extends SpecificationWithJUnit {
     }
 
     val processor = new Processor {
-      def process(p1: Exchange) {
+      def process(p1: Exchange): Unit = {
         p1.getIn().setBody(p1.getIn.getBody + "done")
       }
     }

@@ -12,7 +12,6 @@ import io.xtech.babel.camel.model.ResequencerDefinition
 import io.xtech.babel.fish.model.{ Expression, Message }
 import io.xtech.babel.fish.{ BaseDSL, DSL2BaseDSL, MessageExpression }
 import org.apache.camel.model.config.ResequencerConfig
-
 import scala.language.implicitConversions
 import scala.reflect.ClassTag
 

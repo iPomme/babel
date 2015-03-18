@@ -13,7 +13,6 @@ import io.xtech.babel.camel.model.{ CamelMessageExpression, Expressions, FoldBod
 import io.xtech.babel.fish.model.AggregationDefinition
 import io.xtech.babel.fish.parsing.StepInformation
 import org.apache.camel.model.{ AggregateDefinition, ProcessorDefinition }
-
 import scala.collection.immutable
 
 /**

@@ -13,7 +13,6 @@ import io.xtech.babel.camel.model._
 import io.xtech.babel.fish.BaseDSL
 import io.xtech.babel.fish.parsing.StepInformation
 import org.apache.camel.model.{ EnrichDefinition => CamelEnrichDefinition, PollEnrichDefinition => CamelPollEnrichDefinition, ProcessorDefinition }
-
 import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag

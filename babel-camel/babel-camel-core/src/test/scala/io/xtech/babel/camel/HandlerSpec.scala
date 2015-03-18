@@ -18,7 +18,6 @@ import org.apache.log4j.spi.LoggingEvent
 import org.apache.log4j.{ AppenderSkeleton, Level }
 import org.slf4j.LoggerFactory
 import org.specs2.mutable.SpecificationWithJUnit
-
 import scala.collection.immutable
 
 class HandlerSpec extends SpecificationWithJUnit {

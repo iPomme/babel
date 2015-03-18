@@ -14,7 +14,6 @@ import io.xtech.babel.fish.parsing.StepInformation
 import io.xtech.babel.fish.{ BodyPredicate, FromDSL }
 import org.apache.camel.builder.RouteBuilder
 import org.apache.camel.model.ProcessorDefinition
-
 import scala.collection.JavaConverters._
 import scala.collection.immutable
 import scala.language.implicitConversions

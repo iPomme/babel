@@ -14,7 +14,6 @@ import io.xtech.babel.fish.model._
 import io.xtech.babel.fish.parsing.{ StepInformation, StepProcessor }
 import org.apache.camel.builder.RouteBuilder
 import org.apache.camel.model.ModelCamelContext
-
 import scala.collection.immutable
 
 // TODO will be fixed in 2.12 https://issues.scala-lang.org/browse/SI-6541

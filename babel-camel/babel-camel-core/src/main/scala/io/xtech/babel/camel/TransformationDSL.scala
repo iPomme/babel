@@ -11,7 +11,6 @@ package io.xtech.babel.camel
 import io.xtech.babel.camel.model.{ BeanClassExpression, BeanNameExpression, BeanObjectExpression }
 import io.xtech.babel.fish.model.TransformerDefinition
 import io.xtech.babel.fish.{ BaseDSL, DSL2BaseDSL }
-
 import scala.language.implicitConversions
 import scala.reflect._
 

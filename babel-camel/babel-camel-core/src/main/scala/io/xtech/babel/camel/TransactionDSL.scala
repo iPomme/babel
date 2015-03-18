@@ -10,7 +10,6 @@ package io.xtech.babel.camel
 
 import io.xtech.babel.camel.model.TransactionDefinition
 import io.xtech.babel.fish.{ BaseDSL, DSL2BaseDSL }
-
 import scala.language.implicitConversions
 import scala.reflect.ClassTag
 

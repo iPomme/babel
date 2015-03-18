@@ -15,7 +15,6 @@ import io.xtech.babel.fish.model.StepDefinition
 import io.xtech.babel.fish.parsing.StepInformation
 import io.xtech.babel.fish.{ BaseDSL, DSL2BaseDSL }
 import org.apache.camel.model.ProcessorDefinition
-
 import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag

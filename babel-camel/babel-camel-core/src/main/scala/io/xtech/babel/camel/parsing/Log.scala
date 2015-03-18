@@ -13,7 +13,6 @@ import io.xtech.babel.camel.model._
 import io.xtech.babel.fish.BaseDSL
 import io.xtech.babel.fish.parsing.StepInformation
 import org.apache.camel.model.ProcessorDefinition
-
 import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag
@@ -25,7 +24,7 @@ private[babel] trait Log extends CamelParsing {
 
   abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
-  implicit def logDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new LogDSL(baseDsl)
+  implicit def logDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]): LogDSL[I] = new LogDSL(baseDsl)
 
   private[this] def parse: Process = {
 

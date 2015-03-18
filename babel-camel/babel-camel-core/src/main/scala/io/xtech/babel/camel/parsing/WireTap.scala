@@ -12,9 +12,7 @@ import io.xtech.babel.camel.WireTapDSL
 import io.xtech.babel.camel.model.WireTapDefinition
 import io.xtech.babel.fish.BaseDSL
 import io.xtech.babel.fish.parsing.StepInformation
-
 import org.apache.camel.model.ProcessorDefinition
-
 import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag

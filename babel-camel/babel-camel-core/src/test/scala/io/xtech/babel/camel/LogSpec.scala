@@ -13,7 +13,6 @@ import org.apache.camel.component.mock.MockEndpoint
 import org.apache.log4j._
 import org.apache.log4j.spi.LoggingEvent
 import org.specs2.mutable.SpecificationWithJUnit
-
 import scala.collection.immutable
 
 class LogSpec extends SpecificationWithJUnit {

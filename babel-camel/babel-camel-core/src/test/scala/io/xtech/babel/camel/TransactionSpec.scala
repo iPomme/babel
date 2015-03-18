@@ -8,10 +8,9 @@
 
 package io.xtech.babel.camel
 
-import javax.sql.DataSource
-
 import io.xtech.babel.camel.TransactionSpec.TransactionTestContext
 import io.xtech.babel.camel.test.CachedBabelSpringSpecification
+import javax.sql.DataSource
 import org.apache.camel.component.mock.MockEndpoint
 import org.apache.camel.spring.SpringCamelContext
 import org.springframework.context.annotation.{ AnnotationConfigApplicationContext, Bean, Configuration }

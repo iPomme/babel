@@ -10,15 +10,12 @@ package io.xtech.babel.camel
 import io.xtech.babel.camel.MarshallerSpec.{ camelCsv, camelJsonXml }
 import io.xtech.babel.camel.model.CamelMessagePredicate
 import io.xtech.babel.camel.test.camel
-
 import java.util.{ ArrayList => JArrayList, HashMap => JHashMap }
-
 import org.apache.camel.component.mock.MockEndpoint
 import org.apache.camel.dataformat.csv.CsvDataFormat
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat
 import org.apache.camel.impl.SimpleRegistry
 import org.apache.commons.csv.writer.{ CSVConfig, CSVField }
-
 import org.specs2.mutable.SpecificationWithJUnit
 
 object MarshallerSpec {

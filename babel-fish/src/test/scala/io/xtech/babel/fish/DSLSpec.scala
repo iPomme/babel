@@ -13,8 +13,6 @@ import io.xtech.babel.fish.model._
 import org.specs2.matcher.MatchResult
 import org.specs2.mutable.SpecificationWithJUnit
 
-import scala.collection.immutable
-
 class DSLSpec extends SpecificationWithJUnit {
   sequential
 
