@@ -53,7 +53,7 @@ trait CachedBabelSpringSpecification extends SpecificationWithJUnit with SpringS
     applicationContext.start()
   }
 
-  private def stopContext() {
+  private def stopContext(): Unit = {
     applicationContext.close()
   }
 
@@ -66,7 +66,7 @@ trait CachedBabelSpringSpecification extends SpecificationWithJUnit with SpringS
   */
 trait BabelSpringSpecification extends SpecificationWithJUnit with SpringSpecification with CamelSpecification with BeforeExample with AfterExample {
 
-  private var appContext: Option[ContextType] = _
+  private[this] var appContext: Option[ContextType] = _
 
   /**
     * Type of the Application Context

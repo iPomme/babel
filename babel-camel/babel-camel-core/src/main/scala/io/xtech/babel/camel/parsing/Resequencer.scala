@@ -15,6 +15,7 @@ import io.xtech.babel.fish.parsing.StepInformation
 import org.apache.camel.model.ProcessorDefinition
 import org.apache.camel.model.config.{ BatchResequencerConfig, StreamResequencerConfig }
 
+import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag
 
@@ -23,7 +24,7 @@ import scala.reflect.ClassTag
   */
 private[babel] trait Resequencer extends CamelParsing {
 
-  abstract override def steps = super.steps :+ parse
+  abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
   implicit def resequencerDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new ResequencerDSL(baseDsl)
 

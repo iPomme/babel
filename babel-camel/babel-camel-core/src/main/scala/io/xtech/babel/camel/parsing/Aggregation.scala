@@ -21,9 +21,9 @@ import scala.collection.immutable
   */
 private[babel] trait Aggregation extends CamelParsing {
 
-  abstract override def steps = super.steps :+ parse
+  abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
-  private[this] def setCompetion(aggregateDefinition: AggregateDefinition, completionStrategies: immutable.Seq[CompletionStrategy]) {
+  private[this] def competion(aggregateDefinition: AggregateDefinition, completionStrategies: immutable.Seq[CompletionStrategy]) {
     for (completion <- completionStrategies) {
       completion match {
         case CompletionInterval(time) => {
@@ -53,7 +53,7 @@ private[babel] trait Aggregation extends CamelParsing {
 
       val nextProcDef = camelProcessorDefinition.aggregate(Expressions.toCamelExpression(correlationExpression), aggregationStrategy)
 
-      setCompetion(nextProcDef, completionStrategies)
+      competion(nextProcDef, completionStrategies)
 
       nextProcDef
     }
@@ -62,7 +62,7 @@ private[babel] trait Aggregation extends CamelParsing {
 
       val nextProcDef = camelProcessorDefinition.aggregate.expression(Expressions.toCamelExpression(correlationExpression)).aggregationStrategyRef(ref)
 
-      setCompetion(nextProcDef, completionStrategies)
+      competion(nextProcDef, completionStrategies)
 
       nextProcDef
     }
@@ -73,7 +73,7 @@ private[babel] trait Aggregation extends CamelParsing {
 
       val nextProcDef = camelProcessorDefinition.aggregate(CamelMessageExpression(groupBy), aggregationStrategy)
 
-      setCompetion(nextProcDef, completionStrategies)
+      competion(nextProcDef, completionStrategies)
 
       nextProcDef
     }
@@ -84,7 +84,7 @@ private[babel] trait Aggregation extends CamelParsing {
 
       val nextProcDef = camelProcessorDefinition.aggregate(CamelMessageExpression(groupBy), aggregationStrategy)
 
-      setCompetion(nextProcDef, completionStrategies)
+      competion(nextProcDef, completionStrategies)
 
       nextProcDef
     }

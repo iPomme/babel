@@ -98,6 +98,7 @@ class SortSpec extends SpecificationWithJUnit {
     "sort int element in a message using an expression with a comparator" in new camel {
 
       //#doc:babel-camel-sort-2-1
+
       import java.util.{ List => JList }
 
       import io.xtech.babel.camel.builder.RouteBuilder
@@ -127,21 +128,23 @@ class SortSpec extends SpecificationWithJUnit {
 
   }
   //#doc:babel-camel-sort-2-2
+
   import scala.math.Ordering.IntOrdering
+
   //The EvenOddOrdering would order the Integer depending on
   //   if they are even or odd
   //1,2,3,4 becomes 2,4,1,3
   object EvenOddOrdering extends IntOrdering {
-    override def compare(a: Int, b: Int): Int = if ((a % 2) == (b % 2)) {
-      Ordering.Int.compare(a, b)
-    }
-    else if (a % 2 == 0) {
-      -1
-    }
-    else {
-      1
+    override def compare(a: Int, b: Int): Int = (a, b) match {
+      case (a, b) if (a % 2) == (b % 2) =>
+        Ordering.Int.compare(a, b)
+      case (a, b) if a % 2 == 0 =>
+        -1
+      case (a, b) =>
+        1
     }
   }
+
   //#doc:babel-camel-sort-2-2
 
 }

@@ -355,7 +355,7 @@ class RouteDefinitionException(val errors: immutable.Seq[ValidationError]) exten
   */
 class DSL() {
 
-  private var fromDefinition: immutable.Set[FromDefinition] = immutable.Set()
+  private[this] var fromDefinition: immutable.Set[FromDefinition] = immutable.Set()
 
   /**
     * Declares the start of a route with a source.

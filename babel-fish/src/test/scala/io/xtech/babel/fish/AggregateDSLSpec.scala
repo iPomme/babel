@@ -29,7 +29,11 @@ class AggregateDSLSpec extends SpecificationWithJUnit {
       // tests the definition generated from the DSL
       definitions.headOption.map(_.from.source.uri) mustEqual Some("direct:input")
 
-      val bodyConvStep = for { step <- definitions.head.from.next } yield step
+      val bodyConvStep = for {
+        s <- definitions.headOption
+        step <- s.from.next
+      } yield step
+
       bodyConvStep must beSome.like[MatchResult[Any]] {
         case step: BodyConvertorDefinition[_, _] => {
           step.outClass mustEqual classOf[String]

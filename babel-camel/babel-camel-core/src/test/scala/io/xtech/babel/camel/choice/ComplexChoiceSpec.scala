@@ -49,7 +49,7 @@ class ComplexChoiceSpec extends SpecificationWithJUnit {
         }
       }
       val routeBuilder = new CRouteBuilder() {
-        def configure() {
+        def configure(): Unit = {
           from("direct:input").multicast()
             .to("direct:camel")
             .to("direct:babel")
@@ -139,7 +139,7 @@ class ComplexChoiceSpec extends SpecificationWithJUnit {
         }
       }
       val routeBuilder = new CRouteBuilder() {
-        def configure() {
+        def configure(): Unit = {
           from("direct:input").multicast()
             .to("direct:camel")
             .to("direct:babel")
@@ -242,7 +242,7 @@ class ComplexChoiceSpec extends SpecificationWithJUnit {
         }
       }
       val routeBuilder = new CRouteBuilder() {
-        def configure() {
+        def configure(): Unit = {
           from("direct:input").multicast()
             .to("direct:camel")
             .to("direct:babel")

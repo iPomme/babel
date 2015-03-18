@@ -29,7 +29,7 @@ class RecipientListSpec extends SpecificationWithJUnit {
     //#doc:babel-camel-recipientList
 
     val nativeRoute = new CRouteBuilder() {
-      def configure() {
+      def configure(): Unit = {
         from("direct:inputCamel").
           recipientList(header("recipients")).
           to("mock:output4")
@@ -82,7 +82,7 @@ class RecipientListSpec extends SpecificationWithJUnit {
     }
 
     val nativeRoute = new CRouteBuilder() {
-      def configure() {
+      def configure(): Unit = {
         from("direct:inputCamel").
           recipientList(header("recipients")).
           to("mock:output4")

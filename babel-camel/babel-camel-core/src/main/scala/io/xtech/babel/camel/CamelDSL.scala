@@ -73,7 +73,7 @@ trait CamelDSL extends StepProcessor[RouteBuilder] with Basics
     */
   protected[camel] def routeBuilder(routeDefinitions: immutable.Seq[RouteDefinition])(implicit camelContext: ModelCamelContext): RouteBuilder = {
     val routeBuilder = new RouteBuilder() {
-      def configure() {
+      def configure(): Unit = {
         routeDefinitions.foreach(routeDefinition => processSteps(StepInformation(routeDefinition.from, None)(this)))
       }
     }

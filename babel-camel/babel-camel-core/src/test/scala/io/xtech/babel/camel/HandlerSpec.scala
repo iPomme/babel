@@ -564,7 +564,7 @@ class HandlerSpec extends SpecificationWithJUnit {
       }
 
       class CamelRoute extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           from("direct:camel").errorHandler(deadLetterChannel("mock:camel-error").maximumRedeliveries(2)).process(camelProcessor).to("mock:camel-success")
         }
       }
@@ -622,7 +622,7 @@ class HandlerSpec extends SpecificationWithJUnit {
       }
 
       class CamelRoute extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           from("direct:camel").errorHandler(deadLetterChannel("mock:camel-error").maximumRedeliveries(2)).process(camelProcessor).to("mock:camel-success")
         }
       }
@@ -677,7 +677,7 @@ class HandlerSpec extends SpecificationWithJUnit {
     "provide noErrorHandler" in new camel {
 
       class MyMasterRoutes extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           onException(classOf[IllegalArgumentException]).continued(true)
           //end is used to end a route on onException, not used with continued...
           from("direct:camel").to("direct:b").to("mock:end")
@@ -685,7 +685,7 @@ class HandlerSpec extends SpecificationWithJUnit {
       }
 
       class MyErrorRoutes extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           //let the parent route manage the error
           //otherwise, exception raises caller
           errorHandler(noErrorHandler())
@@ -740,7 +740,7 @@ class HandlerSpec extends SpecificationWithJUnit {
     "provide loggingErrorHandler" in new camel {
 
       class CamelRoute extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           from("direct:camel").errorHandler(loggingErrorHandler(LoggerFactory.getLogger("my.cool.tata"), LoggingLevel.TRACE))
             .throwException(new Exception()).to("mock:camel-success")
         }
@@ -1325,7 +1325,7 @@ class HandlerSpec extends SpecificationWithJUnit {
       }
 
       class CamelRoute extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           errorHandler(defaultErrorHandler().maximumRedeliveries(0).maximumRedeliveries(2))
           from("direct:camel").process(camelProcessor).to("mock:camel-success")
         }
@@ -1383,7 +1383,7 @@ class HandlerSpec extends SpecificationWithJUnit {
       }
 
       class CamelRoute extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           errorHandler(deadLetterChannel("mock:camel-error").maximumRedeliveries(2))
           from("direct:camel").process(camelProcessor).to("mock:camel-success")
         }
@@ -1442,7 +1442,7 @@ class HandlerSpec extends SpecificationWithJUnit {
     "provide noErrorHandler" in new camel {
 
       class MyMasterRoutes extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           onException(classOf[IllegalArgumentException]).continued(true)
           //end is used to end a route on onException, not used with continued...
           from("direct:camel").to("direct:b").to("mock:end")
@@ -1450,7 +1450,7 @@ class HandlerSpec extends SpecificationWithJUnit {
       }
 
       class MyErrorRoutes extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           //let the parent route manage the error
           //otherwise, exception raises caller
           from("direct:b").errorHandler(noErrorHandler()).throwException(new IllegalArgumentException("Forced")) to ("mock:toto")
@@ -1508,7 +1508,7 @@ class HandlerSpec extends SpecificationWithJUnit {
     "provide loggingErrorHandler" in new camel {
 
       class CamelRoute extends org.apache.camel.builder.RouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           errorHandler(loggingErrorHandler(LoggerFactory.getLogger("my.cool.titi"), LoggingLevel.TRACE))
 
           from("direct:camel")
@@ -1578,11 +1578,11 @@ object ErrorSharedLogs {
 
 class ErrorAppender extends AppenderSkeleton {
 
-  def append(event: LoggingEvent) {
+  def append(event: LoggingEvent): Unit = {
     ErrorSharedLogs.events :+= event
   }
 
-  def close() {}
+  def close(): Unit = {}
 
   def requiresLayout(): Boolean = false
 }
@@ -1593,11 +1593,11 @@ object RBErrorSharedLogs {
 
 class RBErrorAppender extends AppenderSkeleton {
 
-  def append(event: LoggingEvent) {
+  def append(event: LoggingEvent): Unit = {
     RBErrorSharedLogs.events :+= event
   }
 
-  def close() {}
+  def close(): Unit = {}
 
   def requiresLayout(): Boolean = false
 }

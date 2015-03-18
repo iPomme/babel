@@ -44,7 +44,7 @@ class AggregateSpec extends SpecificationWithJUnit {
     //#doc:babel-camel-aggregate-camel-1
 
     val camelRoute = new CRouteBuilder {
-      def configure() {
+      def configure(): Unit = {
         from("direct:camel").aggregate(constant("1"), new GroupedExchangeAggregationStrategy).completionSize(3).to("mock:camel")
       }
     }
@@ -106,7 +106,7 @@ class AggregateSpec extends SpecificationWithJUnit {
     //#doc:babel-camel-aggregate-camel-2
 
     val camelRoute = new CRouteBuilder {
-      def configure() {
+      def configure(): Unit = {
         from("direct:camel").aggregate(constant("1")).aggregationStrategyRef("aggregationStrategy").completionSize(3).to("mock:camel")
       }
     }
@@ -178,7 +178,7 @@ class AggregateSpec extends SpecificationWithJUnit {
         }
       }
 
-      def configure() {
+      def configure(): Unit = {
         from("direct:input").multicast().to("direct:babel").to("direct:camel").end
         from("direct:camel").aggregate(constant("a"), strategy).completionSize(3).to("mock:camel")
       }
@@ -246,7 +246,7 @@ class AggregateSpec extends SpecificationWithJUnit {
         }
       }
 
-      def configure() {
+      def configure(): Unit = {
         from("direct:input").multicast().to("direct:babel").to("direct:camel").end
         from("direct:camel").aggregate(constant("a"), strategy).completionSize(3).to("mock:camel")
       }

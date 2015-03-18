@@ -100,7 +100,7 @@ class TransactionErrorHandlerDefinition extends StepDefinition with RedeliveryEr
   */
 case class OnExceptionDefinition[T <: Throwable](exception: Class[T],
                                                  when: Option[Predicate[Any]] = None) extends StepDefinition {
-  private var predicate: Option[(Boolean, Predicate[Any])] = None
+  private[this] var predicate: Option[(Boolean, Predicate[Any])] = None
 
   /**
     * used by the *handled* and the *handledMessage* keywords to set an handled predicate

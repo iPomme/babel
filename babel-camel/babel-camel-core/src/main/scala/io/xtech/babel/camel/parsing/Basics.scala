@@ -28,7 +28,7 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
 
   implicit def subRouteDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new SubRouteDSL(baseDsl)
 
-  def steps = immutable.Seq(from,
+  def steps: immutable.Seq[Process] = immutable.Seq(from,
     handle,
     subs,
     handler,
@@ -63,7 +63,7 @@ private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
           processor.to(d.channelUri)
 
         //in case of on[Exception] at RouteBuilder level, the processor.to is managed by the Handler.parseOnException
-        case other =>
+        case _ =>
       }
 
       //beginning of subroute

@@ -14,6 +14,7 @@ import io.xtech.babel.fish.FromDSL
 import io.xtech.babel.fish.parsing.StepInformation
 import org.apache.camel.model.ProcessorDefinition
 
+import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag
 
@@ -21,7 +22,7 @@ import scala.reflect.ClassTag
   * The routeId parser.
   */
 private[babel] trait RouteId extends CamelParsing {
-  abstract override def steps = super.steps :+ parse
+  abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
   implicit def routeIdDSLExtension[I: ClassTag](baseDsl: FromDSL[I]) = new RouteIdDSL(baseDsl)
 

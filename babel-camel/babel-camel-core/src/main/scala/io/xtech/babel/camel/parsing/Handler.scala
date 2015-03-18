@@ -16,6 +16,7 @@ import org.apache.camel.builder.RouteBuilder
 import org.apache.camel.model.ProcessorDefinition
 
 import scala.collection.JavaConverters._
+import scala.collection.immutable
 import scala.language.implicitConversions
 import scala.reflect.ClassTag
 
@@ -24,7 +25,7 @@ import scala.reflect.ClassTag
   */
 private[babel] trait Handler extends CamelParsing {
 
-  abstract override def steps = super.steps :+ parse
+  abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
   implicit def handlerDSLExtension[I: ClassTag](baseDsl: FromDSL[I]) = new HandlerDSL(baseDsl)
 
@@ -33,7 +34,7 @@ private[babel] trait Handler extends CamelParsing {
     BodyPredicate[Any](_ => bool)
   }
 
-  private def parseOnException[T <: Throwable, I](exception: OnExceptionDefinition[T], processor: org.apache.camel.model.OnExceptionDefinition): Unit = {
+  private[this] def parseOnException[T <: Throwable, I](exception: OnExceptionDefinition[T], processor: org.apache.camel.model.OnExceptionDefinition): Unit = {
     //Warning: predicates and functions here may cause Camel to fail silently (without printing any exception)
 
     exception.applyToCamel(processor)
@@ -58,7 +59,7 @@ private[babel] trait Handler extends CamelParsing {
       s.buildHelper //if sub exists for this onException, it should be parsed specifically...
 
     case s @ StepInformation(handler: ErrorHandling, camelProcessorDefinition: ProcessorDefinition[_]) =>
-      s.buildHelper.getRouteCollection.getRoutes.asScala.last.setErrorHandlerBuilder(handler.camelErrorHandlerBuilder)
+      s.buildHelper.getRouteCollection.getRoutes.asScala.lastOption.map(_.setErrorHandlerBuilder(handler.camelErrorHandlerBuilder))
       camelProcessorDefinition
 
     //handling at RouteBuilder level

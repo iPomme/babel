@@ -14,7 +14,7 @@ class BabelRouteTest extends SpecificationWithJUnit {
       applicationContext.start()
 
       camelContext.getRouteDefinition("route1").adviceWith(camelContext, new AdviceWithRouteBuilder {
-        def configure() {
+        def configure(): Unit = {
           mockEndpointsAndSkip("direct:output")
         }
       })

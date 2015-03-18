@@ -70,11 +70,11 @@ object SharedLogs {
 
 class Appender extends AppenderSkeleton {
 
-  def append(event: LoggingEvent) {
+  def append(event: LoggingEvent): Unit = {
     SharedLogs.events :+= event
   }
 
-  def close() {}
+  def close(): Unit = {}
 
   def requiresLayout(): Boolean = false
 }
