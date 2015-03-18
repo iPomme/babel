@@ -10,7 +10,7 @@ import scalariform.formatter.preferences._
 
 object Formatting{
 
-  def formattingPreferences = FormattingPreferences()
+  def formattingPreferences: FormattingPreferences = FormattingPreferences()
     .setPreference(AlignSingleLineCaseStatements, true)
     .setPreference(DoubleIndentClassDeclaration, true)
     .setPreference(PreserveDanglingCloseParenthesis, true)

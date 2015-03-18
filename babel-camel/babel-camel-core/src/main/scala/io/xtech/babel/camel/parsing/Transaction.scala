@@ -24,7 +24,7 @@ private[babel] trait Transaction extends CamelParsing {
 
   abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
-  implicit def transactedDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new TransactionDSL(baseDsl)
+  implicit def transactedDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]): TransactionDSL[I] = new TransactionDSL(baseDsl)
 
   // parsing of an transaction definition
   private[this] def parse: Process = {

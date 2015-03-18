@@ -49,11 +49,11 @@ trait CamelDSL extends StepProcessor[RouteBuilder] with Basics
     with WireTap
     with Validation {
 
-  implicit def stringSource(uri: String) = CamelSource(uri)
+  implicit def stringSource(uri: String): CamelSource = CamelSource(uri)
 
-  implicit def stringSink(uri: String) = CamelSink(uri)
+  implicit def stringSink(uri: String): CamelSink[Any] = CamelSink(uri)
 
-  implicit def stringSinks(uris: Seq[String]) = immutable.Seq(uris.map(new CamelSink(_)): _*)
+  implicit def stringSinks(uris: Seq[String]): immutable.Seq[CamelSink[Any]] = immutable.Seq(uris.map(new CamelSink(_)): _*)
 
   //transforms a Camel Expression to a Babel Expression, but does not apply on instances which inherit of the Camel Expression
   //otherwise, scala implicits would not be able to differ camelPredicateExpression and camelPredicate

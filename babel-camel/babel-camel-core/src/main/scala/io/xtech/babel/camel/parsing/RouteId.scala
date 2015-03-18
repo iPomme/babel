@@ -23,7 +23,7 @@ import scala.reflect.ClassTag
 private[babel] trait RouteId extends CamelParsing {
   abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
-  implicit def routeIdDSLExtension[I: ClassTag](baseDsl: FromDSL[I]) = new RouteIdDSL(baseDsl)
+  implicit def routeIdDSLExtension[I: ClassTag](baseDsl: FromDSL[I]): RouteIdDSL[I] = new RouteIdDSL(baseDsl)
 
   private[this] def parse: Process = {
 

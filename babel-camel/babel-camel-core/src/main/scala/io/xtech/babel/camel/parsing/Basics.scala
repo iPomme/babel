@@ -25,7 +25,7 @@ import scala.reflect.ClassTag
   */
 private[babel] trait Basics extends CamelParsing { self: CamelDSL =>
 
-  implicit def subRouteDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new SubRouteDSL(baseDsl)
+  implicit def subRouteDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]): SubRouteDSL[I] = new SubRouteDSL(baseDsl)
 
   def steps: immutable.Seq[Process] = immutable.Seq(from,
     handle,

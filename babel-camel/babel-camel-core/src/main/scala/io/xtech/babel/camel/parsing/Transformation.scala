@@ -25,13 +25,11 @@ private[babel] trait Transformation extends CamelParsing {
 
   abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
-  implicit def transformationDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new TransformationDSL(baseDsl)
+  implicit def transformationDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]): TransformationDSL[I] = new TransformationDSL(baseDsl)
 
-  def toProcessor[I, O](function: (I => O)) = new CamelBodyProcessor(function)
+  private[this] def bodyFunctionToProcess[I, O](function: (I => O)): org.apache.camel.Processor = new CamelBodyProcessor(function)
 
-  def bodyFunctionToProcess[I, O](function: (I => O)): org.apache.camel.Processor = new CamelBodyProcessor(function)
-
-  def messageFunctionToProcess[I, O](function: (Message[I] => Message[O])): org.apache.camel.Processor = new CamelMessageProcessor(function)
+  private[this] def messageFunctionToProcess[I, O](function: (Message[I] => Message[O])): org.apache.camel.Processor = new CamelMessageProcessor(function)
 
   /**
     * Parses the "processBody" statement.

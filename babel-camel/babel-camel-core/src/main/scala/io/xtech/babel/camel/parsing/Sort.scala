@@ -24,7 +24,7 @@ private[babel] trait Sort extends CamelParsing {
 
   abstract override def steps: immutable.Seq[Process] = super.steps :+ parse
 
-  implicit def sortDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new SortDSL(baseDsl)
+  implicit def sortDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]): SortDSL[I] = new SortDSL(baseDsl)
 
   private[this] def parse: Process = {
 

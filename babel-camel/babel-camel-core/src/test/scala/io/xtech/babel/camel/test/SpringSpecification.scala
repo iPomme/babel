@@ -57,7 +57,7 @@ trait CachedBabelSpringSpecification extends SpecificationWithJUnit with SpringS
   }
 
   /** the map method allows to "post-process" the fragments after their creation */
-  override def map(fs: => Fragments) = Step(startContext()) ^ fs ^ Step(stopContext())
+  override def map(fs: => Fragments): Fragments = Step(startContext()) ^ fs ^ Step(stopContext())
 }
 
 /**

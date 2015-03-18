@@ -12,6 +12,7 @@ import io.xtech.babel.camel.TransactionSpec.TransactionTestContext
 import io.xtech.babel.camel.test.CachedBabelSpringSpecification
 import javax.sql.DataSource
 import org.apache.camel.component.mock.MockEndpoint
+import org.apache.camel.model.ModelCamelContext
 import org.apache.camel.spring.SpringCamelContext
 import org.springframework.context.annotation.{ AnnotationConfigApplicationContext, Bean, Configuration }
 import org.springframework.core.io.DefaultResourceLoader
@@ -39,15 +40,15 @@ object TransactionSpec {
     }
 
     @Bean
-    def txManager(dataSource: DataSource) = {
+    def txManager(dataSource: DataSource) : DataSourceTransactionManager = {
       new DataSourceTransactionManager(dataSource)
     }
 
     @Bean
-    def camelContext = new SpringCamelContext
+    def camelContext: ModelCamelContext = new SpringCamelContext
 
     @Bean
-    def jdbcTemplate(dataSource: DataSource) = new JdbcTemplate(dataSource)
+    def jdbcTemplate(dataSource: DataSource): JdbcTemplate = new JdbcTemplate(dataSource)
 
   }
 
