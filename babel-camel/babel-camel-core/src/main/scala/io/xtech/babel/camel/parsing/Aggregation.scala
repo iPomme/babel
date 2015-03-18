@@ -46,7 +46,7 @@ private[babel] trait Aggregation extends CamelParsing {
   }
 
   // parsing of an aggregation definition
-  private def parse: Process = {
+  private[this] def parse: Process = {
 
     // parse a native camel aggregation
     case StepInformation(AggregationDefinition(CamelAggregation(correlationExpression, aggregationStrategy, completionStrategies)), camelProcessorDefinition: ProcessorDefinition[_]) => {

@@ -49,11 +49,11 @@ trait CachedBabelSpringSpecification extends SpecificationWithJUnit with SpringS
     */
   val applicationContext: ContextType
 
-  private def startContext() {
+  private[this] def startContext() {
     applicationContext.start()
   }
 
-  private def stopContext(): Unit = {
+  private[this] def stopContext(): Unit = {
     applicationContext.close()
   }
 

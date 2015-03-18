@@ -27,7 +27,7 @@ private[babel] trait Sort extends CamelParsing {
 
   implicit def sortDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new SortDSL(baseDsl)
 
-  private def parse: Process = {
+  private[this] def parse: Process = {
 
     case StepInformation(SortDefinition(expression, Some(comparator)), camelProcessorDefinition: ProcessorDefinition[_]) => {
 

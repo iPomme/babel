@@ -52,7 +52,7 @@ class LoggingErrorHandlerDefinition(log: Logger, level: LoggingLevel) extends St
 trait RedeliveryErrorHandling extends ErrorHandling {
   protected def routeErrorHandler(): DefaultErrorHandlerBuilder
 
-  private var _redeliveryPolicy: Function[RedeliveryPolicy, RedeliveryPolicy] = (x: RedeliveryPolicy) => x
+  private[this] var _redeliveryPolicy: Function[RedeliveryPolicy, RedeliveryPolicy] = (x: RedeliveryPolicy) => x
 
   def camelErrorHandlerBuilder() = {
     val handler = routeErrorHandler()

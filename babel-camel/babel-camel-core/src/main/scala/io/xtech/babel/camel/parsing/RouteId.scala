@@ -26,7 +26,7 @@ private[babel] trait RouteId extends CamelParsing {
 
   implicit def routeIdDSLExtension[I: ClassTag](baseDsl: FromDSL[I]) = new RouteIdDSL(baseDsl)
 
-  private def parse: Process = {
+  private[this] def parse: Process = {
 
     case StepInformation(RouteIdDefinition(routeId), camelProcessorDefinition: ProcessorDefinition[_]) => {
 

@@ -28,7 +28,7 @@ private[babel] trait Resequencer extends CamelParsing {
 
   implicit def resequencerDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new ResequencerDSL(baseDsl)
 
-  private def parse: Process = {
+  private[this] def parse: Process = {
 
     case StepInformation(ResequencerDefinition(expression, batch: BatchResequencerConfig), camelProcessorDefinition: ProcessorDefinition[_]) => {
 

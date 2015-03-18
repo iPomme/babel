@@ -38,7 +38,7 @@ private[babel] trait Transformation extends CamelParsing {
     * Parses the "processBody" statement.
     * @see CamelDSL.StepImplementation
     */
-  private def parse: Process = {
+  private[this] def parse: Process = {
 
     case StepInformation(TransformerDefinition(BodyExpression(function), processorId), camelProcessorDefinition: ProcessorDefinition[_]) => {
 

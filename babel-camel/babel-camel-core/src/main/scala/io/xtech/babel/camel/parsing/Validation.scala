@@ -24,7 +24,7 @@ private[babel] trait Validation extends CamelParsing {
   implicit def validationDSLExtension[I: ClassTag](baseDsl: BaseDSL[I]) = new ValidationDSL(baseDsl)
 
   // parsing of an validation definition
-  private def parse: Process = {
+  private[this] def parse: Process = {
 
     case StepInformation(ValidationDefinition(expression), camelProcessorDefinition: ProcessorDefinition[_]) => {
       camelProcessorDefinition.validate(Predicates.toCamelPredicate(expression))
